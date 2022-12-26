@@ -2,7 +2,7 @@ package com.example.controller;
 
 import com.example.model.Product;
 import com.example.model.ProductDto;
-import com.example.services.IServices;
+import com.example.services.IProductServices;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.Map;
 @Controller
 public class ProductController {
     @Autowired
-    IServices services;
+    IProductServices services;
 
     @GetMapping("/producthome")
     public String showMapProduct(Model model) {
@@ -44,6 +44,14 @@ public class ProductController {
     public String showCreate(Model model){
         model.addAttribute("product",new Product());
         return "create";
+    }
+    @PostMapping("search")
+    public String search(@RequestParam(value = "codeSearch") String codeSearch,Model model ){
+      Product product=  services.findByCode(codeSearch);
+      ProductDto productDto = new ProductDto();
+      BeanUtils.copyProperties(product, productDto);
+      model.addAttribute("productDto",productDto);
+        return "search";
     }
 
     @GetMapping("edit")

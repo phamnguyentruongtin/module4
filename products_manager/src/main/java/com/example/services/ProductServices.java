@@ -1,16 +1,16 @@
 package com.example.services;
 
 import com.example.model.Product;
-import com.example.repo.IDao;
+import com.example.repo.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
 @org.springframework.stereotype.Service
-public class Service implements IServices{
+public class ProductServices implements IProductServices {
 
     @Autowired
-    IDao dao;
+    IProductRepository dao;
     @Override
     public Map<String, Product> getData() {
         return dao.getData();

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class Dao implements  IDao{
+public class ProductRepository implements IProductRepository {
     static Map<String, Product> mapProducts = new HashMap<>();
     static {
         Product product1 = new Product("PD-001","Noodle","acecook","2 year");

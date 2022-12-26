@@ -1,11 +1,10 @@
-package com.example.repo;
+package com.example.services;
 
 import com.example.model.Product;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public interface IDao {
+public interface IProductServices {
     Map<String, Product> getData();
     void save(Product product);
     void delete(String codeProduct);

@@ -1,10 +1,10 @@
-package com.example.services;
+package com.example.repo;
 
 import com.example.model.Product;
 
 import java.util.Map;
 
-public interface IServices {
+public interface IProductRepository {
     Map<String, Product> getData();
     void save(Product product);
     void delete(String codeProduct);
