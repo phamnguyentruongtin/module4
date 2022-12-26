@@ -9,26 +9,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Send Mail</title>
 </head>
 <body>
 <%--@elvariable id="email" type=""--%>
 <form:form method="post" modelAttribute="email" action="dosend">
-      <label>Languages</label> <form:select path="language">
-        <option value="en">EN</option>
-        <option value="vn">VN</option>
-        <option value="cn">CN</option>
-        <option value="jp">JP</option>
-      </form:select>
-      <label>Page Size</label>
-      <p>show <form:select path="pageSize">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </form:select>emails per page</p>
+    <label>Languages</label> <form:select path="language">
+    <form:options items="${languagerList}"></form:options>
+</form:select>
+    <label>Page Size</label>
+    <p>show <form:select path="pageSize">
+        <form:options items="${pageList}"></form:options>
+    </form:select>emails per page
+    </p>
     <label>Spams Fillter</label>
     <form:checkbox path="spamsFillter"/><br>
     <label>Signature</label>

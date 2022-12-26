@@ -1,4 +1,4 @@
-package com.example.repo;
+package com.example.repository;
 
 import com.example.model.HealthDeclaration;
 import org.springframework.stereotype.Repository;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.Map;
 @Repository
-public class Daoimpl implements IDao {
+public class HealthDeclarationRepository implements IHealthDeclarationRepository {
     Map<Integer,HealthDeclaration> healthDeclarationList = new HashMap<>();
     @Override
     public void save(HealthDeclaration healthDeclaration) {

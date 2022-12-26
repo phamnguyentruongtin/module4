@@ -1,10 +1,7 @@
-package com.example.repo;
+package com.example.repository;
 
 import com.example.model.HealthDeclaration;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public interface IDao {
+public interface IHealthDeclarationRepository {
     void save(HealthDeclaration healthDeclaration);
 }

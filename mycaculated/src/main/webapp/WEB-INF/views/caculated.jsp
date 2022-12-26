@@ -16,7 +16,7 @@
     </select>
     <label>Number2</label>
     <input type="number" name="num2">
-    <button type="submit">Tinh</button>
+    <button type="submit">result</button>
 </form>
 <label>Ket Qua</label>
 ${result}

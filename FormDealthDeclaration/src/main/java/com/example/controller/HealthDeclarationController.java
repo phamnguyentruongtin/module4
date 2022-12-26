@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.Services.ISer;
+import com.example.services.IHealthDeclarationServices;
 import com.example.model.HealthDeclaration;
 import com.example.model.HealthDeclarationDto;
 import org.springframework.beans.BeanUtils;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HealthDeclarationController {
     @Autowired
-    ISer ser;
+    IHealthDeclarationServices healthDeclarationServices;
 
     HealthDeclaration healthDeclaration = new HealthDeclaration();
     @GetMapping("healthdeclaration")
@@ -26,8 +26,8 @@ public class HealthDeclarationController {
     @PostMapping("/submit")
     public String submit(@ModelAttribute HealthDeclarationDto healthDeclarationDto,Model model){
         BeanUtils.copyProperties(healthDeclarationDto,healthDeclaration);
-        ser.save(healthDeclaration.getId(),healthDeclaration);
-        String mess = "Goi Thanh Cong";
+        healthDeclarationServices.save(healthDeclaration.getId(),healthDeclaration);
+        String mess = "send success";
         model.addAttribute("mess",mess);
         return "showregister";
 

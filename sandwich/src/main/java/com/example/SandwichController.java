@@ -20,8 +20,8 @@ public class SandwichController {
     }
 
     @PostMapping("listsandwich")
-    public String showLists(@RequestParam("condiment") String giavVi, Model model) {
-        sandwichList.add("sandwich + " + giavVi + "\n");
+    public String showLists(@RequestParam("condiment") String codiment, Model model) {
+        sandwichList.add("sandwich + " + codiment + "\n");
         model.addAttribute("result", sandwichList);
         return "sandwich";
     }

@@ -1,4 +1,4 @@
-package com.example.model.controller;
+package com.example.controller;
 
 import com.example.model.Mail;
 import org.springframework.stereotype.Controller;
@@ -13,11 +13,26 @@ import java.util.List;
 
 @Controller
 @RequestMapping("mail")
-public class mailController {
+public class MailController {
     List<Mail> mailList = new ArrayList<>();
     @GetMapping("showsend")
     public String sendMail(Model model) {
+        List<String> languageList = new ArrayList<>();
+        languageList.add("En");
+        languageList.add("Vn");
+        languageList.add("Cn");
+        languageList.add("Jp");
+        List<Integer> pageList = new ArrayList<>();
+        pageList.add(5);
+        pageList.add(10);
+        pageList.add(15);
+        pageList.add(20);
+        pageList.add(25);
+        pageList.add(50);
+        pageList.add(100);
         Mail mail;
+        model.addAttribute("pageList",pageList);
+        model.addAttribute("languagerList",languageList);
         model.addAttribute("email", mail = new Mail());
         return "showcreate";
     }
