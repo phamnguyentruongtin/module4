@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/create}">Create Product</a>
+<p th:text="${msg}"></p>
+<table border="1px">
+    <tr>
+        <th>Code Products</th>
+        <th>Name Products</th>
+        <th>Manufacturer</th>
+        <th>Date</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Detail</th>
+    </tr>
+    <tr th:each="productDto : ${mapDto.keySet()}">
+        <td th:text="${productDto}"></td>
+        <td th:text="${mapDto.get(productDto).codeProduct}"></td>
+        <td th:text="${mapDto.get(productDto).nameProduct}"></td>
+        <td th:text="${mapDto.get(productDto).date}"></td>
+        <td><a th:href="@{/delete/?codeproduct=__${mapDto.get(productDto).getCodeProduct()}__}">delete</a></td>
+        <td><a th:href="@{/edit/?codeproduct=__${mapDto.get(productDto).getCodeProduct()}__}">edit</a></td>
+        <td><a th:href="@{/detail/__${mapDto.get(productDto).getCodeProduct()}__}">detail</a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
