@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:method="post" action="/doedit"  th:object="${product}">
+<form th:method="post" action="/doedit"  th:object="${productDto}">
     <input type="hidden" th:field="*{codeProduct}">
     <lable>Product Name</lable>
     <input th:field="*{nameProduct}">

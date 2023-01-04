@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Music</title>
+</head>
+<body>
+<h1>My App Music</h1>
+<a th:href="@{/showcreate}">Click To Create</a>
+<p th:text="${sms}"></p>
+<table>
+    <tr>
+        <th>Song Name</th>
+        <th>Musical</th>
+        <th>Music Type</th>
+        <th>Click To Listen</th>
+    </tr>
+    <tr th:each="song : ${musicList}">
+      <td th:text="${song.musicName}"></td>
+      <td th:text="${song.musical}"></td>
+      <td th:text="${song.musicType}"></td>
+      <td><a th:href="${song.url}"></a></td>
+      <td><a th:href="@{/editsong?musicName=__${song.musicName}__}">edit</a></td>
+      <td><a th:href="@{/removesong?musicName=__${song.musicName}__}">remove</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

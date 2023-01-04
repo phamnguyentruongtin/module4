@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/docreate" method="post" th:object="${product}">
+<form action="/docreate" method="post" th:object="${productDto}">
     <input th:field="*{codeProduct}">
     <lable>Product Name</lable>
     <input th:field="*{nameProduct}">
@@ -13,7 +13,6 @@
     <input th:field="*{manufacturer}">
     <lable>date</lable>
     <input th:field="*{date}">
-
     <button type="submit">Create</button>
 
 </form>

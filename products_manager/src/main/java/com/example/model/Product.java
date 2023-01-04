@@ -1,6 +1,11 @@
 package com.example.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Product")
 public class Product {
+    @Id
     private String codeProduct;
     private String nameProduct;
     private String manufacturer;

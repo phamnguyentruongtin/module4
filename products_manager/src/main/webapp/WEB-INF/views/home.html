@@ -22,14 +22,14 @@
         <th>Action</th>
         <th>Detail</th>
     </tr>
-    <tr th:each="productDto : ${mapDto.keySet()}">
-        <td th:text="${productDto}"></td>
-        <td th:text="${mapDto.get(productDto).codeProduct}"></td>
-        <td th:text="${mapDto.get(productDto).nameProduct}"></td>
-        <td th:text="${mapDto.get(productDto).date}"></td>
-        <td><a th:href="@{/delete/?codeproduct=__${mapDto.get(productDto).getCodeProduct()}__}">delete</a></td>
-        <td><a th:href="@{/edit/?codeproduct=__${mapDto.get(productDto).getCodeProduct()}__}">edit</a></td>
-        <td><a th:href="@{/detail/__${mapDto.get(productDto).getCodeProduct()}__}">detail</a></td>
+    <tr th:each="productDto : ${mapDto}">
+        <td th:text="${productDto.codeProduct}"></td>
+        <td th:text="${productDto.nameProduct}"></td>
+        <td th:text="${productDto.manufacturer}"></td>
+        <td th:text="${productDto.date}"></td>
+        <td><a th:href="@{/delete/?codeproduct=__${productDto.getCodeProduct()}__}">delete</a></td>
+        <td><a th:href="@{/edit/?codeproduct=__${productDto.getCodeProduct()}__}">edit</a></td>
+        <td><a th:href="@{/detail/__${productDto.getCodeProduct()}__}">detail</a></td>
     </tr>
 
 </table>
