@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Danh Sách Blog</h1>
+<a th:href="@{/showcreateblog}" style="display: block;margin: 10px" >Viết Bài</a>
+<a th:href="@{/authorhome}" style="display: block;margin: 10px" >Xem Danh Sach Tác Giả</a>
+
+<table border="1px">
+    <tr>
+        <th>Mã Tác Giả</th>
+        <th>Tên Tác Giả</th>
+        <th>Mã Bài Báo</th>
+        <th>Tên Bài Báo</th>
+        <th>Ngày Phát Hành</th>
+        <th>Nội Dung Bài Báo</th>
+        <th>Xóa Bài</th>
+        <th>Sửa Bài</th>
+    </tr>
+    <tr th:each="article : ${listAr}">
+        <td th:text="${article.author.idAuthor}"></td>
+        <td th:text="${article.author.nameAuthor}"></td>
+        <td th:text="${article.idArticle}"></td>
+        <td th:text="${article.nameArticle}"></td>
+        <td th:text="${article.publicationDate}"></td>
+        <td><a th:href="@{/content?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+        <td><a th:href="@{/delete?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+        <td><a th:href="@{/edit?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

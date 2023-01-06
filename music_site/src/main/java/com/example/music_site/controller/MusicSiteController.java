@@ -37,7 +37,7 @@ public class MusicSiteController {
         iMusicServices.addNewSongOrEditSong(music);
         String sms = "success";
         redirectAttributes.addFlashAttribute("sms", sms);
-        return "redirect:home";
+        return "redirect:musichome";
     }
     @GetMapping("removesong")
     public String remove(String musicName,RedirectAttributes redirectAttributes){
@@ -45,7 +45,7 @@ public class MusicSiteController {
         iMusicServices.removeSong(music);
         String sms = "success";
         redirectAttributes.addFlashAttribute("sms",sms);
-        return "redirect:home";
+        return "redirect:musichome";
     }
 
     @GetMapping("editsong")
@@ -60,6 +60,6 @@ public class MusicSiteController {
         iMusicServices.addNewSongOrEditSong(music);
         String sms = "success";
         redirectAttributes.addFlashAttribute("sms", sms);
-        return "redirect:home";
+        return "redirect:musichome";
     }
 }

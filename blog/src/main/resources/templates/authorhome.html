@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Danh Sách Tác Giả</h1>
+<a th:href="@{/showcreateblog}" style="display: block;margin: 10px" >Viết Bài</a>
+<p th:text="${sms}"></p>
+<a th:href="@{/createauthor}" style="color: red;text-decoration: none">Nếu Bạn Chưa Có Tác Giả Bấm Vào Đây</a>
+<table border="1px">
+  <tr>
+    <th>Mã Tác Giả</th>
+    <th>Tên Tác Giả</th>
+    <th>Các Bài Báo</th>
+    <th>Xóa Tác Giả</th>
+  </tr>
+  <tr th:each="author : ${listAu}">
+    <td th:text="${author.idAuthor}"></td>
+    <td th:text="${author.nameAuthor}"></td>
+    <td><a th:href="@{/getlistarticlebyidauther?idAuthor=__${author.idAuthor}__}">Bấm vào đây</a></td>
+    <td><a th:href="@{/deleteauthor?idAuthor=__${author.idAuthor}__}">Bấm vào đây</a></td>
+  </tr>
+</table>
+
+</body>
+</html>

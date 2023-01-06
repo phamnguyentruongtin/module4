@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${sms}"></p>
+  <form action="createblog" method="post" th:object="${article}">
+      <input th:field="*{idArticle}" style="display: block" type="hidden">
+      <label style="display: block">Tên Bài Báo</label>
+      <input th:field="*{nameArticle}" style="display: block">
+      <label style="display: block">Ngày Phát Hành</label>
+      <input th:field="*{publicationDate}" type="date" style="display: block">
+      <label style="display: block">Nội Dung Bài Báo</label>
+      <textarea th:field="*{content}" style="display: block"></textarea>
+      <select th:field="*{author}">
+          <option th:each="author : ${author}" th:text="${author.nameAuthor}" th:value="${author.idAuthor}"></option>
+      </select>
+      <a th:href="@{/createauthor}" style="color: red;text-decoration: none;display: block">Nếu Bạn Chưa Có Tác Giả Bấm Vào Đây</a>
+      <button type="submit">Đăng Bài</button>
+      <input type="reset" value="Nhập lại">
+  </form>
+
+
+</body>
+</html>

@@ -1,7 +1,8 @@
 package com.example.music_site.model;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
-
+@Entity
 public class Music {
     @Id
     private String musicName;

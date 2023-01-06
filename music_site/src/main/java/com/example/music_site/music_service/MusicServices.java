@@ -30,7 +30,7 @@ public class MusicServices implements IMusicServices{
 
     @Override
     public Music getMusicByNameSong(String nameSong) {
-        Music music = musicRepository.findByNameMusicContent(nameSong);
+        Music music = musicRepository.findBymusicNameContaining(nameSong);
         return music;
     }
 }

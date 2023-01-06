@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1px">
+    <tr>
+        <th>Mã Bài Báo</th>
+        <th>Tên Bài Báo</th>
+        <th>Ngày Phát Hành</th>
+        <th>Nội Dung Chi Tiết Bài Báo</th>
+    </tr>
+    <tr th:each="article : ${list}">
+        <td th:text="${article.idArticle}"></td>
+        <td th:text="${article.nameArticle}"></td>
+        <td th:text="${article.publicationDate}"></td>
+        <td><a th:href="@{/content?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+
+    </tr>
+</table>
+</body>
+</html>

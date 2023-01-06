@@ -8,7 +8,7 @@
 <h1>My App Music</h1>
 <a th:href="@{/showcreate}">Click To Create</a>
 <p th:text="${sms}"></p>
-<table>
+<table border="1px">
     <tr>
         <th>Song Name</th>
         <th>Musical</th>
@@ -19,7 +19,7 @@
       <td th:text="${song.musicName}"></td>
       <td th:text="${song.musical}"></td>
       <td th:text="${song.musicType}"></td>
-      <td><a th:href="${song.url}"></a></td>
+      <td><a th:href="${song.url}">Click here</a></td>
       <td><a th:href="@{/editsong?musicName=__${song.musicName}__}">edit</a></td>
       <td><a th:href="@{/removesong?musicName=__${song.musicName}__}">remove</a></td>
     </tr>
