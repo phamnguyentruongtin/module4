@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<h1>Kết Quả Tìm Kiếm Được</h1>
+<table border="1px" class="table table-dark table-striped">
+  <tr>
+    <th>Mã Tác Giả</th>
+    <th>Tên Tác Giả</th>
+    <th>Mã Bài Báo</th>
+    <th>Tên Bài Báo</th>
+    <th>Ngày Phát Hành</th>
+    <th>Nội Dung Bài Báo</th>
+    <th>Xóa Bài</th>
+    <th>Sửa Bài</th>
+  </tr>
+  <tr>
+    <td th:text="${article.author.idAuthor}"></td>
+    <td th:text="${article.author.nameAuthor}"></td>
+    <td th:text="${article.idArticle}"></td>
+    <td th:text="${article.nameArticle}"></td>
+    <td th:text="${article.publicationDate}"></td>
+    <td><a th:href="@{/content?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+    <td><a th:href="@{/delete?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+    <td><a th:href="@{/edit?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
+  </tr>
+</table>
+</body>
+</html>

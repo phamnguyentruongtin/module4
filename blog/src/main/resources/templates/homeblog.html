@@ -22,6 +22,11 @@
 <h1>Danh Sách Blog</h1>
 <a th:href="@{/showcreateblog}" style="display: block;margin: 10px">Viết Bài</a>
 <a th:href="@{/authorhome}" style="display: block;margin: 10px">Xem Danh Sach Tác Giả</a>
+<form method="post" action="searcharticle" style="margin: 10px">
+    <input type="number" name="idarticle" placeholder="write id of article to detail..." size="100px">
+    <input type="submit" value="Tim Kiem">
+</form>
+<p th:text="${sms}" style="color: red;margin: 10px"></p>
 
 <table border="1px" class="table table-dark table-striped">
     <tr>

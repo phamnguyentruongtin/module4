@@ -18,8 +18,12 @@
 <body>
 <h1>Danh Sách Tác Giả</h1>
 <a th:href="@{/showcreateblog}" style="display: block;margin: 10px" >Viết Bài</a>
-<p th:text="${sms}"></p>
-<a th:href="@{/createauthor}" style="color: red;text-decoration: none">Nếu Bạn Chưa Có Tác Giả Bấm Vào Đây</a>
+<a th:href="@{/createauthor}" style="color: red;text-decoration: none;margin: 10px">Nếu Bạn Chưa Có Tác Giả Bấm Vào Đây</a>
+<form action="searchauthor" method="post">
+  <input type="number" placeholder="Nhập id để tìm kiếm" name="idAuthor">
+  <input type="submit" value="Tìm Kiếm">
+</form>
+<p th:text="${sms}" style="color: red;margin: 10px"></p>
 <table border="1px" class="table table-dark table-striped">
   <tr>
     <th>Mã Tác Giả</th>

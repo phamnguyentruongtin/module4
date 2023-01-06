@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -123,5 +124,39 @@ public class ArticleController {
         redirectAttributes.addFlashAttribute("sms", sms);
         return "redirect:authorhome";
     }
+
+    @PostMapping("searcharticle")
+    public String searchArticle(@RequestParam Integer idarticle, RedirectAttributes redirectAttributes, Model model) {
+        Article article = articleServices.getInFoArticle(idarticle);
+        String sms = "";
+        String response = "";
+        if (article == null) {
+            sms = "không thể tìm thấy...";
+            redirectAttributes.addFlashAttribute("sms", sms);
+            response = "redirect:homeblog";
+        } else {
+            model.addAttribute("article", article);
+            response = "searcharticle";
+        }
+
+        return response;
+    }
+
+    @PostMapping("searchauthor")
+    public String searchauthor(@RequestParam Integer idAuthor, RedirectAttributes redirectAttributes, Model model) {
+        Author author = authorServices.findByidAuthor(idAuthor);
+        String sms = "";
+        String response = "";
+        if (author == null) {
+            sms = "không thể tìm thấy...";
+            redirectAttributes.addFlashAttribute("sms", sms);
+            response = "redirect:authorhome";
+        } else {
+            model.addAttribute("author", author);
+            response = "searchauthor";
+        }
+        return response;
+    }
+
 }
 
