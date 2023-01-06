@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface IMusicRepository extends JpaRepository {
+public interface IMusicRepository extends JpaRepository<Music,String> {
     Music findByNameMusicContent(String name);
 }

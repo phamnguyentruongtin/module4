@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class MusicServices implements IMusicServices{
     @Autowired
-    IMusicRepository musicRepository;
+  private IMusicRepository musicRepository;
 
     @Override
     public void addNewSongOrEditSong(Music song) {

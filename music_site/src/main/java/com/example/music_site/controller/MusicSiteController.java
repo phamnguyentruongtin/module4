@@ -16,7 +16,7 @@ import java.util.List;
 public class MusicSiteController {
 
     @Autowired
-    IMusicServices iMusicServices;
+   private IMusicServices iMusicServices;
 
 
     @GetMapping("musichome")
