@@ -3,6 +3,7 @@ package com.example.blog.services;
 import com.example.blog.model.Author;
 import com.example.blog.repository.IAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class AuthorServices implements IAuthorServices{
 
     @Override
     public List<Author> findAllAuthor() {
-        List<Author> authorList = authorRepository.findAll();
+        List<Author> authorList = authorRepository.findAll(Sort.sort(Author.class));
         return authorList;
     }
 

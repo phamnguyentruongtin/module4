@@ -9,6 +9,7 @@ public class Article {
     @Column(name = "id_article")
     private Integer idArticle;
     private String nameArticle;
+    @Column(columnDefinition = "text")
     private String content;
     private String publicationDate;
     @ManyToOne()
