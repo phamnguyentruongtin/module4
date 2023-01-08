@@ -17,24 +17,29 @@
 </head>
 <body>
 <form action="doedit" method="post">
-<table th:object="${article}" border="1px" class="table table-dark table-striped">
-    <tr>
-        <th>Mã Tác Giả</th>
-        <th>Tên Tác Giả</th>
-        <th>Mã Bài Báo</th>
-        <th>Tên Bài Báo</th>
-        <th>Ngày Phát Hành</th>
-        <th>Nội Dung Bài Báo</th>
-    </tr>
-    <tr>
-       <th><input th:field="*{author.idAuthor}" readonly></th>
-       <th><input th:field="*{author.nameAuthor}"></th>
-       <th><input th:field="*{idArticle}" readonly></th>
-       <th><input th:field="*{nameArticle}"></th>
-       <th><input th:field="*{publicationDate}"></th>
-       <th><input th:field="*{content}"></th>
-    </tr>
-</table>
+    <table th:object="${article}" border="1px" class="table table-dark table-striped">
+        <tr>
+            <th>Mã Tác Giả</th>
+            <th>Tên Tác Giả</th>
+            <th>Mã Bài Báo</th>
+            <th>Tên Bài Báo</th>
+            <th>Ngày Phát Hành</th>
+            <th>Nội Dung Bài Báo</th>
+            <th>Chọn Lại Tác Giả</th>
+        </tr>
+        <tr>
+            <th><P th:text="*{author.idAuthor}"></p></th>
+            <th><p th:text="*{author.nameAuthor}"></p></th>
+            <th><input th:field="*{idArticle}" readonly></th>
+            <th><input th:field="*{nameArticle}"></th>
+            <th><input th:field="*{publicationDate}"></th>
+            <th><input th:field="*{content}"></th>
+            <th><select th:field="*{author}">
+                <option th:each="author : ${listAuthor}" th:text="${author.nameAuthor}" th:value="${author.idAuthor}"></option>
+            </select></th>
+        </tr>
+    </table>
+    <a th:href="@{/createauthor}" style="color: red;text-decoration: none;display: block">Nếu Bạn Chưa Có Tác Giả Bấm Vào Đây</a>
     <button type="submit">Thay Dổi</button>
     <input type="reset" value="Nhập lại">
 </form>

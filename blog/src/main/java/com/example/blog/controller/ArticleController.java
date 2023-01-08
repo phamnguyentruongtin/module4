@@ -58,13 +58,9 @@ public class ArticleController {
 
     @GetMapping("delete")
     public String deleteArticle(RedirectAttributes redirectAt, Integer idBaiBao) {
-        String sms;
+        String sms = "";
         Article article = articleServices.getInFoArticle(idBaiBao);
-        if (articleServices.removeArticle(article)) {
             sms = "Delete Succcess";
-        } else {
-            sms = "Not Found Article You Want To Delete!!!";
-        }
 
         redirectAt.addFlashAttribute("sms", sms);
         return "redirect:homeblog";
@@ -81,6 +77,7 @@ public class ArticleController {
             redirectAt.addFlashAttribute("sms", sms);
         } else {
             model.addAttribute("article", article);
+            model.addAttribute("listAuthor",authorServices.findAllAuthor());
             resover = "showedit";
         }
         return resover;
