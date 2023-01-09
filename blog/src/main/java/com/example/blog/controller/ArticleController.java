@@ -5,6 +5,8 @@ import com.example.blog.model.Author;
 import com.example.blog.services.IArticleServices;
 import com.example.blog.services.IAuthorServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +25,15 @@ public class ArticleController {
     IAuthorServices authorServices;
 
     @GetMapping("homeblog")
-    public String showHomeBlog(Model model) {
-        model.addAttribute("listAr", articleServices.getAllArticle());
+    public String showHomeBlog(Model model,@RequestParam (value = "page",defaultValue = "0")int page, @RequestParam(value = "size",defaultValue = "1")int size) {
+        Sort sort = Sort.by("publication_date").and(Sort.by("id_article"));
+        model.addAttribute("listAr", articleServices.getAllArticleWithPage(PageRequest.of(page, size,sort)));
         return "homeblog";
     }
 
     @GetMapping("authorhome")
-    public String showHomeAuthor(Model model) {
-        model.addAttribute("listAu", authorServices.findAllAuthor());
+    public String showHomeAuthor(Model model,@RequestParam (value = "page",defaultValue = "0")int page, @RequestParam(value = "size",defaultValue = "1")int size) {
+        model.addAttribute("listAu", authorServices.findAllAuthorWithPage(PageRequest.of(page,size)));
         return "authorhome";
     }
 
@@ -60,26 +63,20 @@ public class ArticleController {
     public String deleteArticle(RedirectAttributes redirectAt, Integer idBaiBao) {
         String sms = "";
         Article article = articleServices.getInFoArticle(idBaiBao);
-            sms = "Delete Succcess";
+        sms = "Delete Succcess";
 
         redirectAt.addFlashAttribute("sms", sms);
         return "redirect:homeblog";
     }
 
     @GetMapping("edit")
-    public String editArticle(Model model, Integer idBaiBao, RedirectAttributes redirectAt) {
+    public String editArticle(Model model, Integer idBaiBao) {
         Article article = articleServices.getInFoArticle(idBaiBao);
-        String sms;
         String resover;
-        if (article == null) {
-            sms = "Not Found Article You Want To Edit!!!";
-            resover = "redirect:homeblog";
-            redirectAt.addFlashAttribute("sms", sms);
-        } else {
-            model.addAttribute("article", article);
-            model.addAttribute("listAuthor",authorServices.findAllAuthor());
-            resover = "showedit";
-        }
+        model.addAttribute("article", article);
+        model.addAttribute("listAuthor", authorServices.findAllAuthor());
+        resover = "showedit";
+
         return resover;
     }
 
@@ -154,6 +151,7 @@ public class ArticleController {
         }
         return response;
     }
+
 
 }
 

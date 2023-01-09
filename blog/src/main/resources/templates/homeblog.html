@@ -50,6 +50,17 @@
         <td><a th:href="@{/edit?idBaiBao=__${article.idArticle}__}">Bấm Vào Đây</a></td>
     </tr>
 </table>
-
+<form action="homeblog" >
+<a th:if="${listAr.hasPrevious()}" th:href="@{/homeblog?page=__${listAr.number - 1}__}">Previous</a>
+<a th:if="${listAr.hasNext()}" th:href="@{/homeblog?page=__${listAr.number + 1}__}">Next</a>
+    <p>Chon so luot san pham ban muon hien thi </p>
+    <select name="size">
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+    </select>
+    <button type="submit"></button>
+</form>
 </body>
 </html>

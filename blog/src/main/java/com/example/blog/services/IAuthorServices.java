@@ -1,6 +1,8 @@
 package com.example.blog.services;
 
 import com.example.blog.model.Author;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -10,5 +12,6 @@ public interface IAuthorServices {
 
     Author findByidAuthor(Integer id);
 
-    List<Author>  findAllAuthor();
+    Page<Author> findAllAuthorWithPage(PageRequest pageRequest);
+    List<Author> findAllAuthor();
 }

@@ -1,10 +1,10 @@
 package com.example.blog.services;
 
 import com.example.blog.model.Article;
-import com.example.blog.model.Author;
 import com.example.blog.repository.IArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +18,11 @@ public class ArticleServices implements IArticleServices{
     }
 
     @Override
-    public List<Article> getAllArticle() {
-        List<Article> articleList = articleRepository.findAll(Sort.sort(Author.class));
-        return articleList;
+    public Page<Article> getAllArticleWithPage(PageRequest page) {
+
+        return articleRepository.findAllArticleWithPage(page);
     }
+
 
     @Override
     public Article getInFoArticle(Integer idArticle) {
