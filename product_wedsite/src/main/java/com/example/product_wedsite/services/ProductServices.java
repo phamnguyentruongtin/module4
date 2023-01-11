@@ -1,7 +1,7 @@
 package com.example.product_wedsite.services;
 
 import com.example.product_wedsite.model.Product;
-import com.example.product_wedsite.repo.IProductRepository;
+import com.example.product_wedsite.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
