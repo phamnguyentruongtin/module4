@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/docreate" method="post" th:object="${productDto}">
+    <input th:field="*{codeProduct}">
+    <lable>Product Name</lable>
+    <input th:field="*{nameProduct}">
+    <lable>manufacturer</lable>
+    <input th:field="*{manufacturer}">
+    <lable>date</lable>
+    <input th:field="*{date}">
+    <button type="submit">Create</button>
+
+</form>
+
+</body>
+</html>

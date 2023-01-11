@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<table border="1px" th:object="${productDto}">
+    <tr>
+        <th>Code Products</th>
+        <th>Name Products</th>
+        <th>Manufacturer</th>
+        <th>Date</th>
+    </tr>
+    <tr>
+        <td th:text="*{codeProduct}"></td>
+        <td th:text="*{nameProduct}"></td>
+        <td th:text="*{manufacturer}"></td>
+        <td th:text="*{date}"></td>
+    </tr>
+</table>
+</body>
+</html>

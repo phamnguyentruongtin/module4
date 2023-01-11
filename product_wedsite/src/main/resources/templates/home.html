@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Manager</title>
+</head>
+<body>
+<h1>Product Manager</h1>
+<form action="search" method="post">
+    <input type="text" name="codeSearch">
+    <input type="submit" value="Search">
+</form>
+<a th:href="@{/create}">Create Product</a>
+<p th:text="${msg}"></p>
+<table border="1px">
+    <tr>
+        <th>Code Products</th>
+        <th>Name Products</th>
+        <th>Manufacturer</th>
+        <th>Date</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Detail</th>
+    </tr>
+    <tr th:each="product : ${pageProduct}">
+        <td th:text="${product.getCodeProduct()}"></td>
+        <td th:text="${product.getNameProduct()}"></td>
+        <td th:text="${product.getManufacturer()}"></td>
+        <td th:text="${product.getDate()}"></td>
+        <td><a th:href="@{/delete/?codeproduct=__${product.getCodeProduct()}__}">delete</a></td>
+        <td><a th:href="@{/edit/?codeproduct=__${product.getCodeProduct()}__}">edit</a></td>
+        <td><a th:href="@{/detail/__${product.getCodeProduct()}__}">detail</a></td>
+    </tr>
+
+</table>
+<a th:if="${pageProduct.hasPrevious()}" th:href="@{/producthome?page=__${pageProduct.number - 1}__}">previous</a>
+<a th:each="pageNow : ${#numbers.sequence(0 , pageProduct.totalPages - 1)}" th:href="@{/producthome?page=__${pageNow}__}" th:text="${pageNow}"></a>
+<a th:if="${pageProduct.hasNext()}" th:href="@{/producthome?page=__${pageProduct.number + 1}__}">Next</a>
+
+</body>
+</html>
